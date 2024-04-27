@@ -9,14 +9,19 @@ import { PickersDay } from '@mui/x-date-pickers/PickersDay';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import { DayCalendarSkeleton } from '@mui/x-date-pickers/DayCalendarSkeleton';
 
-
-function fakeFetch(date, { signal }) {
+function fakeFetch(date, tasks, { signal }) {
   return new Promise((resolve, reject) => {
     const timeout = setTimeout(() => {
       const daysInMonth = date.daysInMonth();
-      const daysToHighlight = [1, 2, 3].map(() => getRandomNumber(1, daysInMonth));
+      const highlightedDays = [];
 
-      resolve({ daysToHighlight });
+      for (let i = 1; i <= daysInMonth; i++) {
+        const dateStr = date.set('date', i).format('DD-MM-YYYY');
+        if (tasks[dateStr] && tasks[dateStr].length > 0) {
+          highlightedDays.push(i);
+        }
+      }
+      resolve({ highlightedDays });
     }, 500);
 
     signal.onabort = () => {
@@ -47,21 +52,17 @@ function ServerDay(props) {
 
 const CalendarPage = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [highlightedDays, setHighlightedDays] = useState([0, 0, 0]);
+  const [highlightedDays, setHighlightedDays] = useState([]);
   const [selectedDate, setSelectedDate] = useState(initialValue);
   const [tasks, setTasks] = useState({});
 
   const fetchHighlightedDays = (date) => {
     setIsLoading(true);
-    fakeFetch(date, {
+    fakeFetch(date, tasks, {
       signal: new AbortController().signal,
     })
-      .then(({ daysToHighlight }) => {
-        const highlightedDays = daysToHighlight.filter(day => {
-            const dateStr = date.set('date', day).format('YYYY-MM-DD');
-            return tasks[dateStr] && tasks[dateStr].length > 0;
-          });
-        setHighlightedDays(daysToHighlight);
+      .then(({ highlightedDays }) => {
+        setHighlightedDays(highlightedDays);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -80,7 +81,7 @@ const CalendarPage = () => {
   };
 
   const handleAddTask = (task) => {
-    const dateStr = selectedDate.format('YYYY-MM-DD');
+    const dateStr = selectedDate.format('DD-MM-YYYY');
     setTasks((prevTasks) => ({
       ...prevTasks,
       [dateStr]: [...(prevTasks[dateStr] || []), task],
@@ -120,7 +121,7 @@ const CalendarPage = () => {
           }}
         />
         <ul>
-          {tasks[selectedDate.format('YYYY-MM-DD')]?.map((task, index) => (
+          {tasks[selectedDate.format('DD-MM-YYYY')]?.map((task, index) => (
             <li key={index}>
               <input
                 type="checkbox"
@@ -128,7 +129,7 @@ const CalendarPage = () => {
                 checked={false} // Implement your logic for checkbox status
               />
               {task}
-              <button onClick={() => handleDeleteTask(selectedDate.format('YYYY-MM-DD'), index)}>
+              <button onClick={() => handleDeleteTask(selectedDate.format('DD-MM-YYYY'), index)}>
                 Delete
               </button>
             </li>
