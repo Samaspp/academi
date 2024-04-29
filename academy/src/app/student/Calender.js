@@ -122,15 +122,15 @@ const CalendarPage = () => {
         />
         <ul>
           {tasks[selectedDate.format('DD-MM-YYYY')]?.map((task, index) => (
-            <li key={index}>
+            <li  className="py-1" key={index}>
               <input
                 type="checkbox"
                 onChange={() => {}}
                 checked={false} // Implement your logic for checkbox status
               />
-              {task}
-              <button onClick={() => handleDeleteTask(selectedDate.format('DD-MM-YYYY'), index)}>
-                Delete
+                {task}
+              <button className="float-right pr-3 " onClick={() => handleDeleteTask(selectedDate.format('DD-MM-YYYY'), index)}>
+                x
               </button>
             </li>
           ))}
