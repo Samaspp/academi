@@ -1,18 +1,24 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Steps
+ git clone https://github.com/{your_github_username}/academy.git
+ 
+ `cd academy`
+ 
+ `npm install`
+ 
+ `npm run dev`
 
-git clone https://github.com/{your_github_username}/academy.git
-cd academy
-npm install
-npm run dev
+if you run into errors with some modules, install them.(material UI etc.)
+- for firebase
+  
+`npm install firebase`
 
-if you run into errors with some modules, install them.(material UI)
-for firebase
-npm install firebase
-npm install firebase-auth
-npm install firebase-firestore
+`npm install firebase-auth`
 
-dependencies": {
-    "@emotion/cache": "^11.11.0",
+`npm install firebase-firestore`
+
+## dependencies":
+    {"@emotion/cache": "^11.11.0",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@mui/icons-material": "^5.15.15",
@@ -29,12 +35,18 @@ dependencies": {
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by creating a new branch by 
-git checkout -b <branchname> 
-after making changes do 
-git add .
-git commit -m "commit message"
-git push origin <branchname>
+- You can start editing the page by creating a new branch by
+  
+`git checkout -b <branchname> `
+
+-after making changes do 
+
+`git add .`
+
+`git commit -m "commit message"`
+
+`git push origin <branchname>`
+
 then send a pull request to main branch
 
 modifying `app/page.js`. The page auto-updates as you edit the file.
