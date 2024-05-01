@@ -22,7 +22,7 @@ function fakeFetch(date, tasks, { signal }) {
         }
       }
       resolve({ highlightedDays });
-    }, 500);
+    }, 100);
 
     signal.onabort = () => {
       clearTimeout(timeout);
@@ -96,8 +96,8 @@ const CalendarPage = () => {
   };
 
   return (
-    <div>
-      <h1>Calendar</h1>
+    <div className='w-4/5'>
+      <h1 className='text-center'>Calendar</h1>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DateCalendar
           value={selectedDate}
@@ -106,11 +106,29 @@ const CalendarPage = () => {
           renderLoading={() => <DayCalendarSkeleton />}
           slots={{ day: ServerDay }}
           slotProps={{ day: { highlightedDays } }}
+          sx={{
+            height: '300px',
+            width: '210px',
+            '.MuiPickersDay-root': {
+              width: '28px', 
+              height: '28px', 
+              margin: '0 1px',
+              padding: '0px',
+            },
+            '.mui-dplwbx-MuiPickersCalendarHeader-label': {
+              fontSize:'15 px',
+              margin: '0px',
+          },
+          '.mui-1aqny2q-MuiPickersCalendarHeader-root': {
+            padding:'0px',
+          }
+        }}
         />
       </LocalizationProvider>
       <div>
-        <h2>Todo List {selectedDate.format('DD-MM-YYYY')}</h2>
-        <input
+        <h2 className='text-center text-[14px]'>Todo List {selectedDate.format('DD-MM-YYYY')}</h2>
+        <input 
+          style={{padding:'10px', paddingLeft:'0px', borderRadius:'30px', outline: 'none'}}
           type="text"
           placeholder="Enter task"
           onKeyDown={(e) => {
@@ -122,12 +140,14 @@ const CalendarPage = () => {
         />
         <ul>
           {tasks[selectedDate.format('DD-MM-YYYY')]?.map((task, index) => (
-            <li  className="py-1" key={index}>
+            <li  className=" py-1" key={index}>
               <input
                 type="checkbox"
-                onChange={() => {}}
-                checked={false} // Implement your logic for checkbox status
-              />
+                checked={false}
+                onChange={() => { 
+                }
+                }
+              /><span  className='pr-2'></span>
                 {task}
               <button className="float-right pr-3 " onClick={() => handleDeleteTask(selectedDate.format('DD-MM-YYYY'), index)}>
                 x
