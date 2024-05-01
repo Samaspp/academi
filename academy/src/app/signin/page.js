@@ -5,6 +5,7 @@ import { Button, IconButton, InputAdornment, TextField } from "@mui/material";
 import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
 import { useRouter } from 'next/navigation'
 import {auth} from "../../../firebase.config";
+import Link from "next/link";
 
 
 export default function Login() { 
@@ -40,26 +41,27 @@ export default function Login() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center bg-white text-black h-screen">
-      <div className="logincontainer w-1/6 flex flex-col justify-center items-center">
+    <div className=" flex  justify-center items-center bg-white text-black h-screen">
+      <div className="logincontainer  flex flex-col  items-center">
         <h1 className="font-bold text-3xl mb-4">Login</h1>
-        <TextField
+
+        <TextField 
           id="email"
           label="Email"
           variant="outlined"
           required
-          className="m-2"
           fullWidth
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
+        <h6 className="m-2"></h6>
         <TextField
           id="password"
           label="Password"
           variant="outlined"
           type={showPassword ? "text" : "password"}
           required
-          className="m-2"
           fullWidth
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -77,12 +79,13 @@ export default function Login() {
             ),
           }}
         />
+        <h6 className="m-2"></h6>
         <Button className="mt-2" variant="contained" onClick={handleLogin}>
           Login
         </Button>
-        <p className="my-2">
+        <p className="my-4">
           Don't have an account ?{" "}
-          <span className="text-sky-600"> Signup</span>{" "}
+          <span className="text-sky-600"> <Link href="/signup">Signup</Link></span>{" "}
         </p>
       </div>
     </div>
