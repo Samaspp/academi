@@ -6,6 +6,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import {auth, app, db} from "../../../firebase.config";
 import { useRouter } from 'next/navigation'
 import { collection, addDoc } from "firebase/firestore";
+import Link from "next/link";
 
 
 
@@ -41,7 +42,7 @@ export default function Signup() {
 };
   return (
     <div className="flex flex-col justify-center items-center bg-white text-black h-screen">
-      <div className="logincontainer w-1/6 flex flex-col justify-center items-center">
+      <div className="logincontainer flex flex-col justify-center items-center">
         <h1 className="font-bold text-3xl mb-4">Signup</h1>
         <TextField
           id="Username"
@@ -53,6 +54,7 @@ export default function Signup() {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
+        <h6 className="m-2"></h6>
         <TextField
           id="Email"
           label="Email"
@@ -63,6 +65,7 @@ export default function Signup() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+        <h6 className="m-2"></h6>
         <TextField
           id="Password"
           label="Password"
@@ -83,11 +86,12 @@ export default function Signup() {
             ),
           }}
         />
+        <h6 className="m-2"></h6>
         <Button className="mt-2" variant="contained" onClick={handleSignup}>
           Signup
         </Button>
-        <p className="my-2">
-          Already have an account? <span className="text-sky-600">Login</span>
+        <p className="my-4">
+          Already have an account? <span className="text-sky-600"><Link href="/signin">Login</Link></span>
         </p>
       </div>
     </div>
