@@ -1,8 +1,10 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+READ THIS
 ## Steps
+ fork repository
+ 
  git clone https://github.com/{your_github_username}/academy.git
  
- `cd academy`
+ `cd academy` !! important !!
  
  `npm install`
  
