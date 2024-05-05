@@ -54,16 +54,6 @@ export default function Signup() {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-        <TextField
-          id="Designation"
-          label="Designation"
-          variant="outlined"
-          required={true}
-          className="m-2"
-          fullWidth
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
         <h6 className="m-2"></h6>
         <TextField
           id="Email"
