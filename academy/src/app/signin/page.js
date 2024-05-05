@@ -27,11 +27,12 @@ export default function Login() {
         // Signed in
         const user = userCredential.user;
         console.log("User logged in:", user);
-        if (designation==='Student')
+       {/*} if (designation==='Student')
           router.push("student");
         else if(designation ==='Teacher')
-          router.push("dashboard")
+        router.push("dashboard")*/}
         // Redirect or perform additional actions
+        router.push("student");
       })
       .catch((error) => {
         const errorCode = error.code;

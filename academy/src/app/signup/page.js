@@ -41,7 +41,7 @@ export default function Signup() {
       const docRef = await addDoc(usersCollectionRef, userDetails);
       console.log("User details added to 'users' collection with ID: ", docRef.id);
       if (designation==='Student')
-        router.push("student");
+        router.push(`/student/${userCredential.user.uid}`);
       else if(designation ==='Teacher')
         router.push("dashboard")
     } catch (error) {
