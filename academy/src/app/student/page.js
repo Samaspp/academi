@@ -1,12 +1,13 @@
 import Head from 'next/head';
 import Calender from './Calender';
+import Navbar from "../components/navbar/Navbar"
 
 const Dashboard = () => {
   return (
     <div>
+      <Navbar/>
       <Head>
         <title>Student Dashboard</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <header>

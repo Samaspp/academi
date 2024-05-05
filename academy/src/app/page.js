@@ -1,5 +1,8 @@
 export default function Home() {
   return (
-   <div>home page</div>
+   <div className="text-center h-1/2">
+    <h1>Welcome to Academy</h1>
+    <button>Sign in</button> <button>Sign up</button>
+   </div>
   );
 }
