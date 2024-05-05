@@ -18,7 +18,7 @@ const Dashboard = () => {
       <main className='md:flex '>
       <Sidebar/>
       <section class="w-4/5 float-right h-60 rounded-lg bg-blue-300 px-6 py-10 ml-20  mr-40 mb-20 mt-10   shadow-xl ring-1 ring-slate-900/5 ">
-       <h3 class="text-base font-medium tracking-tight text-slate-900 ">Welcome {username}</h3>
+       <h3 class="text-base font-medium tracking-tight text-slate-900 ">Welcome </h3>
        <p class="mt-2 text-sm text-slate-500 " >This is an even longer p tag element</p>
         <button
           id="performance"
