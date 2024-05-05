@@ -1,4 +1,3 @@
-// pages/calendar.js
 'use client'
 import { useState, useEffect } from 'react';
 import dayjs from 'dayjs';
@@ -54,7 +53,16 @@ const CalendarPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [highlightedDays, setHighlightedDays] = useState([]);
   const [selectedDate, setSelectedDate] = useState(initialValue);
-  const [tasks, setTasks] = useState({});
+  const [tasks, setTasks] = useState(() => {
+    // Initialize tasks from local storage or an empty object if not found
+    const savedTasks = localStorage.getItem('tasks');
+    return savedTasks ? JSON.parse(savedTasks) : {};
+  });
+
+  useEffect(() => {
+    // Save tasks to local storage whenever it changes
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }, [tasks]);
 
   const fetchHighlightedDays = (date) => {
     setIsLoading(true);
@@ -84,7 +92,7 @@ const CalendarPage = () => {
     const dateStr = selectedDate.format('DD-MM-YYYY');
     setTasks((prevTasks) => ({
       ...prevTasks,
-      [dateStr]: [...(prevTasks[dateStr] || []), task],
+      [dateStr]: [...(prevTasks[dateStr] || []), { task, completed: false }],
     }));
   };
 
@@ -92,6 +100,15 @@ const CalendarPage = () => {
     setTasks((prevTasks) => ({
       ...prevTasks,
       [date]: prevTasks[date].filter((_, i) => i !== index),
+    }));
+  };
+
+  const handleCheckboxChange = (date, index) => {
+    setTasks((prevTasks) => ({
+      ...prevTasks,
+      [date]: prevTasks[date].map((task, i) =>
+        i === index ? { ...task, completed: !task.completed } : task
+      ),
     }));
   };
 
@@ -118,11 +135,11 @@ const CalendarPage = () => {
             '.mui-dplwbx-MuiPickersCalendarHeader-label': {
               fontSize:'15 px',
               margin: '0px',
-          },
-          '.mui-1aqny2q-MuiPickersCalendarHeader-root': {
-            padding:'0px',
-          }
-        }}
+            },
+            '.mui-1aqny2q-MuiPickersCalendarHeader-root': {
+              padding:'0px',
+            }
+          }}
         />
       </LocalizationProvider>
       <div>
@@ -143,12 +160,10 @@ const CalendarPage = () => {
             <li  className=" py-1" key={index}>
               <input
                 type="checkbox"
-                checked={false}
-                onChange={() => { 
-                }
-                }
+                checked={task.completed}
+                onChange={() => handleCheckboxChange(selectedDate.format('DD-MM-YYYY'), index)}
               /><span  className='pr-2'></span>
-                {task}
+                {task.task} {/* Display the task */}
               <button className="float-right pr-3 " onClick={() => handleDeleteTask(selectedDate.format('DD-MM-YYYY'), index)}>
                 x
               </button>
