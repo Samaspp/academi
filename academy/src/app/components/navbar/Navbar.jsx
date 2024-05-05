@@ -1,13 +1,17 @@
 import React from "react";
 import "./Navbar.css";
+import Image from "next/image";
 import AccountCircleSharpIcon from "@mui/icons-material/AccountCircleSharp";
 const Navbar = () => {
   return (
     <div className="navbar">
       <div className="navbar-img--container">
-        <img
+        <Image
           className="navbar-img"
-          src="https://edu.google.com/assets/icons/pages/main/workspace-for-education/classroom/classroom-banner-2.svg"
+          src="/logo-no-background.svg"
+          alt="Logo"
+          width={200}
+          height={40}
         />
       </div>
       <div className="navbar-searchbar"></div>
