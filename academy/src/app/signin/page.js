@@ -4,7 +4,7 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { Button, IconButton, InputAdornment, TextField } from "@mui/material";
 import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
 import { useRouter } from 'next/navigation'
-import {auth} from "../../../firebase.config";
+import {auth} from '../../../firebase.config'
 import Link from "next/link";
 
 
@@ -27,7 +27,10 @@ export default function Login() {
         // Signed in
         const user = userCredential.user;
         console.log("User logged in:", user);
-        router.push("/home")
+        if (designation==='Student')
+          router.push("student");
+        else if(designation ==='Teacher')
+          router.push("dashboard")
         // Redirect or perform additional actions
       })
       .catch((error) => {
