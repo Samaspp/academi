@@ -3,18 +3,18 @@ import "./Sidebar.css";
 import React from "react";
 import Link from "next/link";
 
-const Sidebar = () => {
+const Sidebar = (props) => {
   return (
     <div className="sidebar">
       <ul>
         <li className="sidebar-li">
-          <Link href="/dashboard">Dashboard</Link>
+        <span onClick={() => {props.setShowDashboard(true);props.setShowAttendance(false);props.setShowAssignments(false)}}>Dashboard</span>
         </li>
         <li className="sidebar-li">
-          <Link href="/attendance">Attendance</Link>
+        <span onClick={() => {props.setShowDashboard(false);props.setShowAttendance(true);props.setShowAssignments(false)}}>Attendance</span>
         </li>
         <li className="sidebar-li">
-          <Link href="/assignment">Assignment</Link>
+        <span onClick={() => {props.setShowDashboard(false);props.setShowAttendance(false);props.setShowAssignments(true)}}>Assignment</span>
         </li>
       </ul>
     </div>

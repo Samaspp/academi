@@ -12,7 +12,7 @@ export default function ClassCard({ id }) {
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         sx={{ height: 140 }}
-        image="https://newsroomcdn.bugatti.com/w_3600,q_75/3giaqcjtpfk3-01-bugatti-chiron-profilee-auction.webp"
+        image="https://media.istockphoto.com/id/1219382595/vector/math-equations-written-on-a-blackboard.jpg?s=612x612&w=0&k=20&c=ShVWsMm2SNCNcIjuWGtpft0kYh5iokCzu0aHPC2fV4A="
         title="green iguana"
       />
       <CardContent>

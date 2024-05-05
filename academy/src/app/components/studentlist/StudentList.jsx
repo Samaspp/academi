@@ -1,4 +1,5 @@
 import React from "react";
+import "./StudentList.css";
 import {
   Box,
   Table,
