@@ -10,12 +10,7 @@ const Sidebar = () => {
         <li className="sidebar-li">
           <Link href="/student">Dashboard</Link>
         </li>
-        <li className="sidebar-li">
-          <Link href="/attendance">Attendance</Link>
-        </li>
-        <li className="sidebar-li">
-          <Link href="/assignment">Assignment</Link>
-        </li>
+        
       </ul>
     </div>
   );
