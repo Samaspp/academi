@@ -16,6 +16,9 @@ const Sidebar = (props) => {
         <li className="sidebar-li">
         <span onClick={() => {props.setShowDashboard(false);props.setShowAttendance(false);props.setShowAssignments(true)}}>Assignment</span>
         </li>
+        <li className="sidebar-li">
+        <span onClick={() => {props.setShowDashboard(false);props.setShowAttendance(false);props.setShowAssignments(false)}}>Discussion Forum</span>
+        </li>
       </ul>
     </div>
   );

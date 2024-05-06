@@ -16,6 +16,9 @@ const Sidebar = () => {
         <li className="sidebar-li">
           <Link href="/assignment">Assignment</Link>
         </li>
+        <li className="sidebar-li">
+          <Link href="/discussion forum">Discussion Forum</Link>
+        </li>
       </ul>
     </div>
   );
