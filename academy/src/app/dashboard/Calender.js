@@ -101,9 +101,9 @@ const CalendarPage = () => {
   };
 
   return (
-    <div className="w-4/5">
-      <h1 className="text-center">Calendar</h1>
-      <div className="flex flex-col items-center justify-center">
+    <div className="mr-20">
+      <h1 className="text-end mr-30 mt-10 pr-20">Calendar</h1>
+      <div className="flex flex-col items-end justify-end">
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DateCalendar
           value={selectedDate}
